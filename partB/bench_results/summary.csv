@@ -1,0 +1,5 @@
+server,throughput_mib_per_sec,requests_per_sec,avg_latency_ms,p99_latency_ms
+poll,282.399,,0.025760,
+epoll,343.146,,0.022379,
+threadpool,589.784,,0.013004,
+io_uring,405.034,,0.019199,

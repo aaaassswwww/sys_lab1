@@ -1,0 +1,4 @@
+connections=64 requests_per_connection=1000 payload_size=1024 bytes
+duration_sec=0.211942 total_requests=64000 total_bytes=131072000
+throughput_mib_per_sec=589.784 requests_per_sec=301969.525
+avg_latency_ms=0.013004 p99_latency_ms=0.017212
