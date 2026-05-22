@@ -661,7 +661,7 @@ int main(int argc, char **argv) {
         uint64_t total;
         size_t chunk_size = config.sizes[i];
 
-        if (chunk_size < 2) {
+        if (chunk_size < 32) {
             continue;
         }
 
@@ -675,7 +675,7 @@ int main(int argc, char **argv) {
         uint64_t total;
         size_t chunk_size = config.sizes[i];
 
-        if (chunk_size < 2) {
+        if (chunk_size < 32) {
             continue;
         }
 
