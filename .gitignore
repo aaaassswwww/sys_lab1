@@ -1,0 +1,27 @@
+# Documents and notes
+*.pdf
+*.txt
+
+# Benchmark outputs
+*.csv
+*.log
+*.tmp
+partA/figures/
+partA/quick_figures/
+partB/bench_results/
+
+# Generated test data
+partA/testfile
+partA/testfile_quick
+
+# Build outputs
+*.o
+*.out
+*.exe
+partA/parta_bench
+partB/poll_server
+partB/epoll_server
+partB/threadpool_server
+partB/io_uring_server
+partB/load_client
+
