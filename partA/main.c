@@ -661,6 +661,10 @@ int main(int argc, char **argv) {
         uint64_t total;
         size_t chunk_size = config.sizes[i];
 
+        if (chunk_size < 2) {
+            continue;
+        }
+
         print_progress("write", chunk_size);
         total = benchmark_write_syscall(config.write_dir, chunk_size, write_total_bytes, false, &timing);
         write_result(csv, "write", chunk_size, "off", total, timing, "write() without O_SYNC");
@@ -670,6 +674,10 @@ int main(int argc, char **argv) {
         timing_t timing;
         uint64_t total;
         size_t chunk_size = config.sizes[i];
+
+        if (chunk_size < 2) {
+            continue;
+        }
 
         print_progress("write", chunk_size);
         total = benchmark_write_syscall(config.write_dir, chunk_size, write_total_bytes, true, &timing);
