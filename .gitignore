@@ -6,9 +6,7 @@
 *.csv
 *.log
 *.tmp
-partA/figures/
 partA/quick_figures/
-partB/bench_results/
 
 # Generated test data
 partA/testfile
