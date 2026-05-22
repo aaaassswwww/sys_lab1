@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/resource.h>
 #include <sys/socket.h>
 #include <unistd.h>
 
@@ -55,6 +56,7 @@ int main(int argc, char **argv) {
     int max_clients = 1024;
     int listen_fd;
     int i;
+    struct rlimit rlim;
     struct pollfd *pfds;
     connection_t *conns;
 
@@ -71,6 +73,17 @@ int main(int argc, char **argv) {
     }
     if (port == 0) {
         usage();
+    }
+
+    if (getrlimit(RLIMIT_NOFILE, &rlim) != 0) {
+        die_errno("getrlimit");
+    }
+    if ((rlim_t) max_clients + 1u >= rlim.rlim_cur) {
+        if (rlim.rlim_cur <= 2) {
+            die("RLIMIT_NOFILE is too small for poll_server");
+        }
+        max_clients = (int) rlim.rlim_cur - 2;
+        fprintf(stderr, "poll_server adjusted max-clients to %d due to RLIMIT_NOFILE\n", max_clients);
     }
 
     listen_fd = create_listen_socket(port, 256, 1);
